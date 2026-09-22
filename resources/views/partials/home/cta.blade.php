@@ -25,7 +25,7 @@
             <div class="cta-media">
 
                 <img
-                    src="{{ asset('slsu_landmark.png') }}"
+                    src="{{ asset('images/home/slsu_landmark.png') }}"
                     alt="SLsu landmark"
                     class="cta-landmark"
                 >

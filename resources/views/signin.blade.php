@@ -302,7 +302,7 @@
 
                 <div class="brand-orb">
                     <img
-                        src="{{ asset('signin.png') }}"
+                        src="{{ asset('images/login/signin.png') }}"
                         alt="IPMS sign up"
                         class="auth-image"
                     >

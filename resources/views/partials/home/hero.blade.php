@@ -119,7 +119,7 @@
             <!-- SCHOOL LOGO -->
             <div class="hero-school-logo">
                 <img
-                    src="{{ asset('slsu_logo.png') }}"
+                    src="{{ asset('images/hero-carousel/slsu_logo.png') }}"
                     alt="SLSU logo"
                     class="hero-school-logo-img"
                 >

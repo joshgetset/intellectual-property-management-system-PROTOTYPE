@@ -76,7 +76,7 @@
 
                 <div class="brand-orb">
                     <img
-                        src="{{ asset('login.png') }}"
+                        src="{{ asset('images/login/login.png') }}"
                         alt="IPMS"
                         class="auth-image"
                     >

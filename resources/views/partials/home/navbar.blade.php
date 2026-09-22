@@ -5,7 +5,7 @@
 
         <a href="{{ route('home') }}" class="brand">
             <img
-                src="{{ asset('slsu_logo.png') }}"
+                src="{{ asset('images/hero-carousel/slsu_logo.png') }}"
                 alt="SLSU logo"
                 class="brand-mark brand-mark-img"
             >

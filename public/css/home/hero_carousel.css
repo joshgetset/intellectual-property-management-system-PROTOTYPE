@@ -21,7 +21,7 @@
     min-height: 860px;
     margin-left: calc(50% - 50vw);
     overflow: hidden;
-    background: #123087 url("../ripe.png") center / cover no-repeat;
+    background: #123087 url("../../images/hero-carousel/ripe.png") center / cover no-repeat;
     padding-bottom: 150px;
     box-shadow: 0 30px 80px rgba(16, 40, 115, 0.2);
 }
