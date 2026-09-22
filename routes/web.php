@@ -23,3 +23,9 @@ Route::get('/login', [AuthController::class, 'showLogin'])
 
 Route::post('/login', [AuthController::class, 'login'])
     ->name('login.submit');
+
+Route::get('/signin', [AuthController::class, 'showSignin'])
+    ->name('signin');
+
+Route::post('/signin', [AuthController::class, 'signin'])
+    ->name('signin.submit');

@@ -1,19 +1,7 @@
-/* =========================================================
-   IPMS HOME — SECTIONS
-   ========================================================= */
-
-
-/* =========================================================
-   ABOUT
-   ========================================================= */
-
 .about {
     position: relative;
-
     padding: 110px 0;
-
     background: #ffffff;
-
     border-bottom:
         1px solid var(--border);
 }
@@ -24,42 +12,28 @@
 
 .section-label {
     margin-bottom: 14px;
-
     color: var(--blue-light);
-
     font-size: 10px;
     font-weight: 700;
-
     letter-spacing: 0.12em;
 }
 
 .about h2,
 .section-heading h2 {
     color: var(--blue-dark);
-
     font-size: clamp(30px, 4vw, 42px);
-
     line-height: 1.2;
-
     letter-spacing: -0.035em;
 }
 
 .about p {
     max-width: 650px;
-
     margin-top: 20px;
-
     color: var(--muted);
-
     font-size: 16px;
-
     line-height: 1.8;
 }
 
-
-/* =========================================================
-   FEATURES
-   ========================================================= */
 
 .features {
     padding: 110px 0;
@@ -163,25 +137,17 @@
 }
 
 
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
 .footer {
     background: var(--blue-dark);
-
     color:
         rgba(255, 255, 255, 0.62);
-
     font-size: 11px;
 }
 
 .footer-inner {
     min-height: 82px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     gap: 20px;
 }

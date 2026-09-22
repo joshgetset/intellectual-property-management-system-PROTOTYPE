@@ -1,377 +1,276 @@
-/* =========================================================
-   IPMS HOME — HERO CAROUSEL
-   ========================================================= */
+/* Hero — geometry, background stack, slides, controls.
+   Background layers on the carousel panel:
+   ripe.png (base) -> ::before residual blue veil
+   -> ::after chevron pattern + tint, masked to fade out right. */
 
 .hero {
     position: relative;
     width: 100%;
-    min-height: 640px;
+    min-height: 740px;
     padding: 0;
     overflow: hidden;
     background: #f6f8fc;
 }
 
-/* =========================================================
-   CAROUSEL CONTAINER
-   ========================================================= */
-
-.hero-carousel {
+.hero .hero-carousel {
     position: relative;
+    isolation: isolate;
     z-index: 2;
-
     width: 100vw;
-    height: 640px;
-    min-height: 640px;
-
+    height: 740px;
+    min-height: 740px;
     margin-left: calc(50% - 50vw);
-
     overflow: hidden;
-
-    background:
-        radial-gradient(
-            circle at 82% 18%,
-            rgba(255, 255, 255, 0.09),
-            transparent 28%
-        ),
-        linear-gradient(
-            110deg,
-            #102873 0%,
-            #18358f 52%,
-            #1d3da3 100%
-        );
-
-    box-shadow:
-        0 30px 80px rgba(16, 40, 115, 0.20);
+    background: #123087 url("../ripe.png") center / cover no-repeat;
+    padding-bottom: 150px;
+    box-shadow: 0 30px 80px rgba(16, 40, 115, 0.2);
 }
 
-/* =========================================================
-   BACKGROUND EFFECTS
-   ========================================================= */
-
-.hero-carousel::before {
+/* Residual blue veil — keeps a hint of blue on the right side */
+.hero .hero-carousel::before {
     content: "";
     position: absolute;
     inset: 0;
-
-    background:
-        radial-gradient(
-            circle at 90% 80%,
-            rgba(255, 255, 255, 0.07),
-            transparent 25%
-        ),
-        radial-gradient(
-            circle at 15% 10%,
-            rgba(255, 255, 255, 0.05),
-            transparent 22%
-        );
-
+    z-index: -1;
+    background: linear-gradient(120deg, rgba(13, 32, 92, 0.3), rgba(24, 53, 143, 0.22));
+    border-radius: inherit;
     pointer-events: none;
 }
 
-.hero-carousel::after {
+/* Chevron pattern + strong tint — masked, fades out to the right */
+.hero .hero-carousel::after {
     content: "";
-
     position: absolute;
-    width: 520px;
-    height: 520px;
-
-    right: -180px;
-    top: -220px;
-
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 50%;
-
-    box-shadow:
-        0 0 0 80px rgba(255, 255, 255, 0.015),
-        0 0 0 160px rgba(255, 255, 255, 0.01);
-
+    inset: 0;
+    z-index: -1;
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='48' viewBox='0 0 96 48'%3E%3Cpath d='M-2 40 L24 16 L50 40 M46 40 L72 16 L98 40' fill='none' stroke='%23ffffff' stroke-opacity='0.04' stroke-width='1.5'/%3E%3C/svg%3E"),
+        linear-gradient(120deg, rgba(13, 32, 92, 0.94) 0%, rgba(18, 41, 115, 0.9) 40%, rgba(29, 61, 163, 0.82) 100%);
+    background-size: 96px 48px, auto;
+    background-repeat: repeat, no-repeat;
+    -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 38%, rgba(0, 0, 0, 0.5) 62%, transparent 78%);
+    mask-image: linear-gradient(90deg, #000 0%, #000 38%, rgba(0, 0, 0, 0.5) 62%, transparent 78%);
+    border-radius: inherit;
     pointer-events: none;
 }
 
-/* =========================================================
-   SLIDES
-   ========================================================= */
-
+/* Slides — content pinned to the LEFT edge of the panel */
 .hero-slide {
     display: none;
-
     position: relative;
     z-index: 3;
-
     width: 100%;
-    height: 640px;
-    min-height: 640px;
-
-    padding-top: 118px;
-    padding-right: max(60px, calc((100vw - 1160px) / 2));
-    padding-bottom: 90px;
-    padding-left: max(60px, calc((100vw - 1160px) / 2));
-
+    height: 740px;
+    min-height: 740px;
+    padding: 118px max(60px, calc((100vw - 1160px) / 2)) 90px;
     color: #ffffff;
 }
 
 .hero-slide.active {
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    justify-content: flex-start;
 }
-
-/* =========================================================
-   MAIN CONTENT
-   ========================================================= */
 
 .hero-slide-content {
-    width: min(760px, 100%);
-
     position: relative;
     z-index: 4;
+    width: min(760px, 100%);
+    text-align: left;
+    align-items: flex-start;
 }
 
-/* =========================================================
-   BADGE
-   ========================================================= */
+.hero-slide-content .hero-badge,
+.hero-slide-content h1,
+.hero-slide-content .hero-description {
+    margin-right: auto;
+}
 
 .hero-badge {
     display: inline-flex;
     align-items: center;
-
     min-height: 32px;
     padding: 7px 14px;
-
     color: rgba(255, 255, 255, 0.92);
-
-    background: rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.16);
-
     border-radius: 999px;
-
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
 
-/* =========================================================
-   HEADING
-   ========================================================= */
-
 .hero-slide h1 {
     max-width: 760px;
-
     margin: 22px 0 0;
-
     color: #ffffff;
-
     font-size: clamp(50px, 5vw, 66px);
     line-height: 1.08;
-
     font-weight: 700;
-
     letter-spacing: -0.045em;
 }
 
 .hero-slide h1 span {
     display: block;
-
     margin-top: 2px;
-
     color: rgba(255, 255, 255, 0.66);
 }
 
-/* =========================================================
-   DESCRIPTION
-   ========================================================= */
-
 .hero-description {
     max-width: 650px;
-
     margin: 23px 0 0;
-    margin-right: auto;
-    margin-left: auto;
-
     color: rgba(255, 255, 255, 0.78);
-
     font-size: 17px;
     line-height: 1.65;
 }
 
-/* =========================================================
-   ACTION BUTTONS
-   ========================================================= */
-
 .hero-actions {
     display: flex;
     align-items: center;
-
+    justify-content: flex-start;
     gap: 16px;
-
     margin-top: 30px;
-    justify-content: center;
 }
 
 .hero-actions .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     min-height: 43px;
-
     padding: 10px 20px;
-
     border-radius: 9px;
-
     font-size: 14px;
     font-weight: 600;
-
     text-decoration: none;
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
-.hero-actions .btn:hover {
-    transform: translateY(-2px);
-}
+.hero-actions .btn:hover { transform: translateY(-2px); }
 
 .btn-primary {
     color: #102873;
-
     background: #ffffff;
-
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
 .btn-primary:hover {
     background: #f4f7ff;
-
-    box-shadow:
-        0 12px 30px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
 }
 
 .btn-secondary {
     color: #ffffff;
-
     background: rgba(255, 255, 255, 0.08);
-
     border: 1px solid rgba(255, 255, 255, 0.22);
 }
 
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.15);
-}
+.btn-secondary:hover { background: rgba(255, 255, 255, 0.15); }
 
-/* =========================================================
-   INFORMATION CARD
-   ========================================================= */
-
-.hero-info-card {
+/* School logo — right side, over the photo zone. Two circular
+   sonar rings pulse OUTWARD around the seal (larger than the
+   logo and stacked above it, so they are always visible); the
+   static circular shadow behind the artwork comes from the
+   img's radial gradient. */
+.hero-school-logo {
     position: absolute;
-
     z-index: 5;
-
     right: max(60px, calc((100vw - 1160px) / 2));
     top: 50%;
-
     transform: translateY(-50%);
-
-    width: 245px;
-
-    padding: 23px;
-
-    color: #ffffff;
-
-    background: rgba(255, 255, 255, 0.09);
-
-    border: 1px solid rgba(255, 255, 255, 0.17);
-
-    border-radius: 16px;
-
-    box-shadow:
-        0 18px 45px rgba(0, 0, 0, 0.13);
-
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-}
-
-.hero-info-card-label {
-    margin-bottom: 12px;
-
-    color: rgba(255, 255, 255, 0.55);
-
-    font-size: 9px;
-    font-weight: 700;
-
-    letter-spacing: 0.14em;
-}
-
-.hero-info-card strong {
-    display: block;
-
-    color: #ffffff;
-
-    font-size: 16px;
-    line-height: 1.4;
-}
-
-.hero-info-card p {
-    margin: 11px 0 0;
-
-    color: rgba(255, 255, 255, 0.68);
-
-    font-size: 12px;
-    line-height: 1.65;
-}
-
-/* =========================================================
-   CAROUSEL CONTROLS
-   ========================================================= */
-
-.hero-carousel-controls {
-    position: absolute;
-
-    z-index: 10;
-
-    left: 50%;
-    bottom: 27px;
-
-    transform: translateX(-50%);
-
+    width: 260px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
 
+.hero-school-logo-img {
+    display: block;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    background: radial-gradient(circle at 50% 55%, rgba(4, 10, 30, 0.32), transparent 62%);
+}
+
+/* Sonar ring 1 */
+.hero-school-logo::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 108%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.96);
+    z-index: 2;
+    animation: logoRingPulse 3.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    pointer-events: none;
+}
+
+/* Sonar ring 2 — half a cycle behind ring 1 */
+.hero-school-logo::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 108%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.96);
+    z-index: 2;
+    animation: logoRingPulse 3.6s cubic-bezier(0.22, 1, 0.36, 1) 1.8s infinite;
+    pointer-events: none;
+}
+
+@keyframes logoRingPulse {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.96);
+    }
+
+    25% {
+        opacity: 0.55;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.3);
+    }
+}
+
+/* Controls */
+.hero-carousel-controls {
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    bottom: 46px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
     gap: 8px;
 }
 
 .carousel-dot {
     width: 7px;
     height: 7px;
-
     padding: 0;
-
     border: 0;
     border-radius: 50%;
-
     background: rgba(255, 255, 255, 0.35);
-
     cursor: pointer;
-
-    transition:
-        width 0.25s ease,
-        background 0.25s ease;
+    transition: width 0.25s ease, background 0.25s ease;
 }
 
 .carousel-dot.active {
     width: 24px;
-
     border-radius: 999px;
-
     background: #ffffff;
 }
 
@@ -379,351 +278,97 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 34px;
     height: 34px;
-
     margin-left: 9px;
-
     color: #ffffff;
-
     background: rgba(255, 255, 255, 0.08);
-
     border: 1px solid rgba(255, 255, 255, 0.18);
-
     border-radius: 50%;
-
     font-size: 15px;
-
     cursor: pointer;
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .carousel-arrow:hover {
     background: rgba(255, 255, 255, 0.16);
-
     transform: translateX(2px);
 }
 
-/* =========================================================
-   SLIDE ANIMATIONS
-   ========================================================= */
+/* Entrance animations */
+.hero-slide.active .hero-badge { animation: heroRise 0.65s ease 0.05s both; }
+.hero-slide.active h1 { animation: heroHeadingIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both; }
+.hero-slide.active .hero-description { animation: heroRise 0.7s ease 0.29s both; }
+.hero-slide.active .hero-actions { animation: heroRise 0.7s ease 0.4s both; }
 
-.hero-slide.active .hero-badge {
-    animation:
-        heroBadgeIn
-        0.65s
-        ease
-        both;
-
-    animation-delay: 0.05s;
-}
-
-.hero-slide.active h1 {
-    animation:
-        heroHeadingIn
-        0.75s
-        cubic-bezier(.22, 1, .36, 1)
-        both;
-
-    animation-delay: 0.15s;
-}
-
-.hero-slide.active .hero-description {
-    animation:
-        heroDescriptionIn
-        0.7s
-        ease
-        both;
-
-    animation-delay: 0.29s;
-}
-
-.hero-slide.active .hero-actions {
-    animation:
-        heroActionsIn
-        0.7s
-        ease
-        both;
-
-    animation-delay: 0.40s;
-}
-
-.hero-slide.active .hero-info-card {
-    animation:
-        heroCardIn
-        0.8s
-        cubic-bezier(.22, 1, .36, 1)
-        both;
-
-    animation-delay: 0.24s;
-}
-
-/* =========================================================
-   KEYFRAMES
-   ========================================================= */
-
-@keyframes heroBadgeIn {
-    from {
-        opacity: 0;
-        transform: translateY(18px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@keyframes heroRise {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes heroHeadingIn {
-    from {
-        opacity: 0;
-        transform: translateY(35px);
-        filter: blur(5px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-    }
+    from { opacity: 0; transform: translateY(35px); filter: blur(5px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
-@keyframes heroDescriptionIn {
-    from {
-        opacity: 0;
-        transform: translateY(22px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Responsive — all hero breakpoints consolidated here */
+@media (max-width: 1100px) {
+    .hero-slide { padding-left: 55px; padding-right: 55px; }
+    .hero-carousel-controls { left: 55px; }
+    .hero-school-logo { right: 45px; width: 190px; }
 }
-
-@keyframes heroActionsIn {
-    from {
-        opacity: 0;
-        transform: translateY(18px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes heroCardIn {
-    from {
-        opacity: 0;
-        transform: translateX(35px) translateY(-50%) scale(0.96);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0) translateY(-50%) scale(1);
-    }
-}
-
-/* =========================================================
-   TABLET
-   ========================================================= */
 
 @media (max-width: 1000px) {
-
-    .hero {
-        min-height: 590px;
-    }
-
-    .hero-carousel {
-        height: 590px;
-        min-height: 590px;
-    }
-
-    .hero-slide {
-        height: 590px;
-        min-height: 590px;
-
-        padding-top: 90px;
-        padding-bottom: 90px;
-        padding-left: 45px;
-        padding-right: 45px;
-    }
-
-    .hero-slide-content {
-        width: min(580px, calc(100% - 270px));
-    }
-
-    .hero-slide h1 {
-        font-size: 48px;
-    }
-
-    .hero-info-card {
-        right: 45px;
-        width: 220px;
-    }
-
-    .hero-carousel-controls {
-        left: 45px;
-    }
+    .hero { min-height: 680px; }
+    .hero-carousel, .hero-slide { height: 680px; min-height: 680px; }
+    .hero-carousel { padding-bottom: 120px; }
+    .hero-slide { padding: 90px 45px; }
+    .hero-slide-content { width: min(580px, 100%); }
+    .hero-slide h1 { font-size: 48px; }
+    .hero-carousel-controls { left: 45px; }
 }
 
-/* =========================================================
-   MOBILE
-   ========================================================= */
+@media (max-width: 768px) {
+    .hero-description { font-size: 14px; line-height: 1.7; }
+    .hero-actions { flex-direction: column; align-items: flex-start; max-width: 240px; gap: 12px; }
+}
 
 @media (max-width: 760px) {
+    /* Stacked mobile text is full-width — the logo would
+       collide with it, so it's hidden here */
+    .hero-school-logo { display: none; }
 
-    .hero {
-        min-height: 650px;
-    }
-
-    .hero-carousel {
-        height: 650px;
-        min-height: 650px;
-    }
-
-    .hero-slide {
-        height: 650px;
-        min-height: 650px;
-
-        padding:
-            104px
-            24px
-            96px;
-    }
-
-    .hero-slide.active {
-        display: block;
-    }
-
-    .hero-slide.active {
-        text-align: center;
-    }
-
-    .hero-slide-content {
-        width: 100%;
-    }
-
-    .hero-slide h1 {
-        max-width: 100%;
-
-        margin-top: 18px;
-
-        font-size: clamp(44px, 11vw, 56px);
-        line-height: 1.05;
-    }
-
-    .hero-description {
-        max-width: 100%;
-
-        margin-top: 20px;
-
-        font-size: 15px;
-        line-height: 1.65;
-    }
-
-    .hero-actions {
-        margin-top: 27px;
-
-        gap: 10px;
-    }
-
-    .hero-actions .btn {
-        min-height: 41px;
-
-        padding:
-            9px 16px;
-
-        font-size: 13px;
-    }
-
-    .hero-info-card {
-        position: absolute;
-
-        left: 24px;
-        right: 24px;
-        top: auto;
-        bottom: 75px;
-
-        transform: none;
-
-        width: auto;
-
-        padding: 16px 18px;
-    }
-
-    .hero-info-card strong {
-        font-size: 14px;
-    }
-
-    .hero-info-card p {
-        font-size: 11px;
-    }
-
-    .hero-carousel-controls {
-        left: 50%;
-        bottom: 25px;
-        transform: translateX(-50%);
-    }
-
-    .hero-slide.active .hero-info-card {
-        animation-name: heroCardMobileIn;
-    }
+    .hero { min-height: 740px; }
+    .hero-carousel, .hero-slide { height: 740px; min-height: 740px; }
+    .hero-carousel { padding-bottom: 130px; }
+    .hero-slide { padding: 104px 24px 96px; }
+    .hero-slide.active { display: block; }
+    .hero-slide-content { width: 100%; }
+    .hero-slide h1 { max-width: 100%; margin-top: 18px; font-size: clamp(44px, 11vw, 56px); line-height: 1.05; }
+    .hero-description { max-width: 100%; margin-top: 20px; font-size: 15px; line-height: 1.65; }
+    .hero-actions { margin-top: 27px; gap: 10px; }
+    .hero-actions .btn { min-height: 41px; padding: 9px 16px; font-size: 13px; }
+    .hero-carousel-controls { bottom: 42px; }
 }
-
-@keyframes heroCardMobileIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
 
 @media (max-width: 480px) {
+    .hero, .hero-carousel, .hero-slide { min-height: 770px; }
+    .hero-carousel, .hero-slide { height: 770px; }
+    .hero-carousel { padding-bottom: 140px; }
+    .hero-slide { padding: 94px 20px 104px; }
+    .hero-slide h1 { max-width: 100%; font-size: 40px; letter-spacing: -0.035em; }
+    .hero-description { font-size: 13px; line-height: 1.7; }
+    .hero-actions { width: 100%; max-width: 230px; }
+    .hero-actions .btn { width: 100%; min-height: 44px; }
+    .hero-badge { font-size: 8px; }
+    .carousel-dot { width: 22px; }
+    .carousel-dot.active { width: 38px; }
+}
 
-    .hero {
-        min-height: 680px;
-    }
-
-    .hero-carousel {
-        height: 680px;
-        min-height: 680px;
-    }
-
-    .hero-slide {
-        height: 680px;
-        min-height: 680px;
-
-        padding-top: 94px;
-    }
-
-    .hero-slide h1 {
-        font-size: 40px;
-    }
-
-    .hero-carousel-controls {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .hero-description {
-        font-size: 13px;
-        line-height: 1.7;
-    }
-
-    .hero-info-card {
-        bottom: 72px;
+@media (prefers-reduced-motion: reduce) {
+    .hero-school-logo::before,
+    .hero-school-logo::after {
+        animation: none;
+        opacity: 0;
     }
 }

@@ -1,7 +1,3 @@
-/* =========================================================
-   IPMS HOME — PATENT MODALS
-   ========================================================= */
-
 .patent-modal {
     position: fixed;
 
@@ -143,9 +139,6 @@
     font-size: 12px;
 }
 
-
-/* RESULTS */
-
 .patent-results {
     display: flex;
 
@@ -200,17 +193,13 @@
 
     font-size: 14px;
     font-weight: 600;
-
     line-height: 1.45;
 }
 
 .patent-result-inventor {
     margin-top: 5px;
-
     color: var(--muted);
-
     font-size: 11px;
-
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -218,21 +207,14 @@
 
 .patent-view {
     flex-shrink: 0;
-
     padding: 8px 12px;
-
     border:
         1px solid #d3dce9;
-
     border-radius: 7px;
-
     background: #ffffff;
-
     color: var(--blue-dark);
-
     font-size: 11px;
     font-weight: 600;
-
     cursor: pointer;
 }
 
@@ -240,63 +222,42 @@
     background: #f1f4fb;
 }
 
-
-/* EMPTY */
-
 .patent-empty {
     padding: 45px 25px;
-
     text-align: center;
-
     border:
         1px solid var(--border);
-
     border-radius: 11px;
-
     background: #fbfcff;
 }
 
 .patent-empty-icon {
     width: 40px;
     height: 40px;
-
     margin: 0 auto 14px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     border-radius: 50%;
-
     background:
         rgba(29, 61, 163, 0.08);
-
     color: var(--blue-light);
-
     font-size: 13px;
     font-weight: 700;
 }
 
 .patent-empty h3 {
     color: var(--blue-dark);
-
     font-size: 16px;
 }
 
 .patent-empty p {
     max-width: 450px;
-
     margin: 6px auto 0;
-
     color: var(--muted);
-
     font-size: 12px;
-
     line-height: 1.6;
 }
-
-
-/* DETAILS */
 
 .details-dialog {
     width: min(800px, 100%);
@@ -304,92 +265,66 @@
 
 .details-title {
     max-width: 680px;
-
     margin-bottom: 28px;
-
     color: var(--blue-dark);
-
     font-size: 26px;
-
     line-height: 1.35;
-
     letter-spacing: -0.025em;
 }
 
 .details-grid {
     display: grid;
-
     grid-template-columns:
         repeat(2, 1fr);
-
     border-top:
         1px solid var(--border);
-
     border-left:
         1px solid var(--border);
 }
 
 .details-item {
     padding: 15px;
-
     border-right:
         1px solid var(--border);
-
     border-bottom:
         1px solid var(--border);
 }
 
 .details-item-label {
     display: block;
-
     margin-bottom: 4px;
-
     color: #8b97a8;
-
     font-size: 9px;
     font-weight: 700;
-
     letter-spacing: 0.08em;
-
     text-transform: uppercase;
 }
 
 .details-item-value {
     display: block;
-
     color: #344252;
-
     font-size: 12px;
-
     line-height: 1.55;
-
     word-break: break-word;
 }
 
 .details-abstract {
     margin-top: 25px;
-
     padding-top: 22px;
-
     border-top:
         1px solid var(--border);
 }
 
 .details-abstract h4 {
     margin-bottom: 8px;
-
     color: #8b97a8;
-
     font-size: 9px;
     font-weight: 700;
-
     letter-spacing: 0.08em;
 }
 
 .details-abstract p {
     color: var(--muted);
-
     font-size: 12px;
-
     line-height: 1.8;
 }
