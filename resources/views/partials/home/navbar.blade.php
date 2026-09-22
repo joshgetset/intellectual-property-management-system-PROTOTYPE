@@ -18,65 +18,91 @@
             </div>
         </a>
 
-        <nav class="nav-links">
+        <div class="nav-actions">
+            <nav class="nav-links" aria-label="Primary navigation">
 
-            <a href="{{ route('home') }}">Home</a>
+                <a href="{{ route('home') }}">Home</a>
 
-            <a href="#about">About</a>
+                <a href="#about">About</a>
 
-            <a href="#features">Features</a>
+                <a href="#features">Features</a>
 
-            <a href="#how-it-works">How It Works</a>
+                <a href="#how-it-works">How It Works</a>
 
-            <div class="patent-search">
+                <div class="patent-search">
 
-                <form
-                    id="patentSearchForm"
-                    data-search-url="{{ route('patents.search.api') }}"
-                >
+                    <form
+                        id="patentSearchForm"
+                        data-search-url="{{ route('patents.search.api') }}"
+                    >
 
-                    <div class="search-input-wrapper">
+                        <div class="search-input-wrapper">
 
-                        <input
-                            type="text"
-                            id="patentQuery"
-                            name="query"
-                            placeholder="Search Patent"
-                            autocomplete="off"
-                        >
-
-                        <button
-                            type="submit"
-                            class="search-submit"
-                            aria-label="Search patents"
-                        >
-                            <svg
-                                width="17"
-                                height="17"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                            <input
+                                type="text"
+                                id="patentQuery"
+                                name="query"
+                                placeholder="Search Patent"
+                                autocomplete="off"
                             >
-                                <circle cx="11" cy="11" r="7"></circle>
-                                <path d="m20 20-4-4"></path>
-                            </svg>
-                        </button>
 
-                    </div>
+                            <button
+                                type="submit"
+                                class="search-submit"
+                                aria-label="Search patents"
+                            >
+                                <svg
+                                    width="17"
+                                    height="17"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <circle cx="11" cy="11" r="7"></circle>
+                                    <path d="m20 20-4-4"></path>
+                                </svg>
+                            </button>
 
-                </form>
+                        </div>
 
-            </div>
+                    </form>
+
+                </div>
+
+            </nav>
+
+            <button
+                type="button"
+                class="mobile-nav-toggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+                aria-controls="mobileNavPanel"
+            >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
 
             <a href="{{ route('login') }}" class="nav-login">
                 Login
             </a>
+        </div>
 
+    </div>
+
+    <div class="mobile-nav-panel" id="mobileNavPanel" hidden>
+        <nav class="mobile-nav-list" aria-label="Mobile navigation">
+            <a href="{{ route('home') }}">Home</a>
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#patentQuery" class="mobile-nav-search" data-mobile-search="true">Search Patent</a>
         </nav>
-
     </div>
 
     <!-- DOCK MODE CONTENT (icons; labels on hover) -->

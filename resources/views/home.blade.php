@@ -40,6 +40,7 @@
     @include('partials.home.footer')
 
     <script src="{{ asset('js/home.js') }}" defer></script>
+    <script src="{{ asset('js/navbar.js') }}" defer></script>
     <script src="{{ asset('js/side-nav.js') }}" defer></script>
     <script src="{{ asset('js/login.js') }}" defer></script>
 </body>

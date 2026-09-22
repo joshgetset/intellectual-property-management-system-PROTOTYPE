@@ -14,6 +14,16 @@ class AuthPagesTest extends TestCase
         $this->assertFileExists(public_path('js/login.js'));
     }
 
+    public function test_home_page_has_mobile_nav_toggle_and_excludes_login_from_menu(): void
+    {
+        $response = $this->get('/');
+
+        $response->assertStatus(200)
+            ->assertSee('mobile-nav-toggle')
+            ->assertSee('mobile-nav-panel')
+            ->assertSee('Login');
+    }
+
     public function test_signin_page_is_available_and_creates_a_user(): void
     {
         $response = $this->get('/signin');

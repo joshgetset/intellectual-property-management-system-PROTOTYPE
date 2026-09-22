@@ -6,7 +6,7 @@
 .hero {
     position: relative;
     width: 100%;
-    min-height: 740px;
+    min-height: 860px;
     padding: 0;
     overflow: hidden;
     background: #f6f8fc;
@@ -17,8 +17,8 @@
     isolation: isolate;
     z-index: 2;
     width: 100vw;
-    height: 740px;
-    min-height: 740px;
+    height: 860px;
+    min-height: 860px;
     margin-left: calc(50% - 50vw);
     overflow: hidden;
     background: #123087 url("../ripe.png") center / cover no-repeat;
@@ -60,8 +60,8 @@
     position: relative;
     z-index: 3;
     width: 100%;
-    height: 740px;
-    min-height: 740px;
+    height: 860px;
+    min-height: 860px;
     padding: 118px max(60px, calc((100vw - 1160px) / 2)) 90px;
     color: #ffffff;
 }
@@ -169,11 +169,7 @@
 
 .btn-secondary:hover { background: rgba(255, 255, 255, 0.15); }
 
-/* School logo — right side, over the photo zone. Two circular
-   sonar rings pulse OUTWARD around the seal (larger than the
-   logo and stacked above it, so they are always visible); the
-   static circular shadow behind the artwork comes from the
-   img's radial gradient. */
+/* School logo — right side, over the photo zone */
 .hero-school-logo {
     position: absolute;
     z-index: 5;
@@ -193,56 +189,6 @@
     position: relative;
     z-index: 1;
     background: radial-gradient(circle at 50% 55%, rgba(4, 10, 30, 0.32), transparent 62%);
-}
-
-/* Sonar ring 1 */
-.hero-school-logo::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 108%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    border: 1.5px solid rgba(255, 255, 255, 0.35);
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.96);
-    z-index: 2;
-    animation: logoRingPulse 3.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
-    pointer-events: none;
-}
-
-/* Sonar ring 2 — half a cycle behind ring 1 */
-.hero-school-logo::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 108%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    border: 1.5px solid rgba(255, 255, 255, 0.35);
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.96);
-    z-index: 2;
-    animation: logoRingPulse 3.6s cubic-bezier(0.22, 1, 0.36, 1) 1.8s infinite;
-    pointer-events: none;
-}
-
-@keyframes logoRingPulse {
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.96);
-    }
-
-    25% {
-        opacity: 0.55;
-    }
-
-    100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(1.3);
-    }
 }
 
 /* Controls */
